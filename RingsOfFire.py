@@ -31,27 +31,39 @@ redSuits = diamonds + hearts
 
 deck = blackSuits + redSuits
 
-addjokers = input("Do you wish to include Jokers? (y/n)")
+addjokers = input("Do you wish to include Jokers? (y/n)\n>>>")
+print()
 
-if addjokers == "y" or "yes":
+if addjokers == "y" or addjokers == "yes":
     deck = deck + jokers
-else:
+    print("Jokers will be included on the deck\n")
+
+if addjokers == "n" or addjokers == "no":
     deck = deck
+    print("Jokers won't be included on the deck\n")
+
+else:
+    print("The input is not valid")
+    print("Jokers won't be included")
+    print()
 
 while len(deck) != 0:
-    card = random.choice(deck)
-
-    print("---------", card, "---------")
-    deck.remove(card)
 
     print("Number of cards on deck:", len(deck))
     print()
-    print("Do you want to draw another card?")
-    print("If yes press Enter")
-    print("if no: 0")
-
-    choice = input()
+    print("Do you want to draw a card? (y/n)")
+    choice = input("\n>>>")
     print()
 
-    if choice == "0":
+    if choice == "y" or choice == "yes":
+
+        card = random.choice(deck)
+
+        print("---------", card, "---------")
+        deck.remove(card)
+
+    elif choice == "n" or choice == "no":
+        print("The game is Over.")
         exit()
+
+    else : print(f"The input of: {choice} is not valid, please choose between Yes or No")
