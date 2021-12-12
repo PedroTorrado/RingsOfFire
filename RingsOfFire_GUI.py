@@ -61,7 +61,8 @@ def Game():
         background_color = "white",
         pad = (10, 10),
         key = "YOUR_CARD")]),
-        center([sg.Button("Pull a card", key = "CARD_BUTTON")])
+        center([sg.Button("Pull a card", key = "CARD_BUTTON")]),
+        center([sg.Button("Restart", key = "RESTART_BUTTON")])
     ]
     return sg.Window("Game", layout = layout, size = (275, 300), finalize = True)
 
@@ -74,7 +75,7 @@ while True:
     window, event, values = sg.read_all_windows()
 
     if window == window1 and event == sg.WINDOW_CLOSED:
-        print("\n -----Game Ended by user-----")
+        print("\n ********* Game Ended by user *********")
         break
 
     if window1 ==window1 and event == "Jokers" and jokerstate == 0:
@@ -100,19 +101,19 @@ while True:
             print("Cards on a deck:", len(deck))
 
     if window == window2 and event == sg.WINDOW_CLOSED:
-        print("\n -----Game Ended by user-----")
+        print("\n ********* Game Ended by user *********")
         break
 
-    if window == window2 and event == "CARD_BUTTON":
+    if window == window2 and event == "RESTART_BUTTON":
+        deck = blackSuits + redSuits
+        print("\n********* Game Restarted *********")
+        window["NUMBER_DISPLAY"].update(value = f"Number of cards on the deck: {len(deck)}")
+
+    if window == window2 and event == "CARD_BUTTON" and len(deck) > 0:
         print(f"\nNumber of cards on the deck: {len(deck)}")
         card = random.choice(deck)
         print("---------", card, "---------")
         deck.remove(card)
-
-        if window == window2 and len(deck) == 0:
-            window["YOUR_CARD"].update(value = "No more cards on the deck, the game is over")
-            window["CARD_BUTTON"].update(text = "Click to exit")
-            if event == "CARD_BUTTON": break
 
         window["NUMBER_DISPLAY"].update(value = f"Number of cards on the deck: {len(deck)}")
         window["YOUR_CARD"].update(value = card)
@@ -120,3 +121,6 @@ while True:
             window["YOUR_CARD"].update(text_color = "Black")
         else:
             window["YOUR_CARD"].update(text_color = "Red")
+
+    if window == window2 and event == "CARD_BUTTON" and len(deck) == 0:
+        window["CARD_BUTTON"].update(text = "Click to exit")
