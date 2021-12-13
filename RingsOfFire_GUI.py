@@ -42,10 +42,19 @@ def WarmUp():
         center([sg.Text("--- Welcome to Rings of Fire ---")]),
         center([sg.Text("Do you wish to include Jokers?")]),
         center([sg.Button("Jokers")]),
-        [sg.Stretch(), sg.Text("Jokers won't be included", text_color = "Red",justification = "center" ,size=(18,1), key = "DISPLAY"),sg.Stretch()],
+        [sg.Stretch(), sg.Text(
+            "Jokers won't be included",
+            text_color = "Red",
+            justification = "center",
+            size=(18,1), key = "DISPLAY"),
+            sg.Stretch()],
         center([sg.Button("Start Game")])
     ]
-    return sg.Window("WarmUp", layout = layout, size = (250, 150), finalize = True)
+    return sg.Window(
+        "WarmUp",
+        layout = layout,
+        size = (250, 150),
+        finalize = True)
 
 def Game():
     layout = [
@@ -56,7 +65,7 @@ def Game():
         center([sg.Text("-----Card Taken-----")]),
         center([sg.Text("Your card will be displayed here",
         text_color = "Black",
-        size = (30,10),
+        size = (30,2),
         justification = "center",
         background_color = "white",
         pad = (10, 10),
@@ -64,7 +73,11 @@ def Game():
         center([sg.Button("Pull a card", key = "CARD_BUTTON")]),
         center([sg.Button("Restart", key = "RESTART_BUTTON")])
     ]
-    return sg.Window("Game", layout = layout, size = (275, 300), finalize = True)
+    return sg.Window(
+        "Game",
+        layout = layout,
+        size = (275, 200),
+        finalize = True)
 
 window1, window2 = WarmUp(), None
 
@@ -80,12 +93,16 @@ while True:
 
     if window1 ==window1 and event == "Jokers" and jokerstate == 0:
         print("Jokers will be included")
-        window["DISPLAY"].update(text_color = "Green", value = "Jokers will be included")
+        window["DISPLAY"].update(
+            text_color = "Green",
+            value = "Jokers will be included")
         jokerstate = 1
 
     elif window == window1 and event == "Jokers" and jokerstate == 1:
         print("Jokers won't be included")
-        window["DISPLAY"].update(text_color = "Red", value = "Jokers won't be included")
+        window["DISPLAY"].update(
+            text_color = "Red",
+            value = "Jokers won't be included")
         jokerstate = 0
 
     elif window == window1 and event == "Start Game":
@@ -107,7 +124,8 @@ while True:
     if window == window2 and event == "RESTART_BUTTON":
         deck = blackSuits + redSuits
         print("\n********* Game Restarted *********")
-        window["NUMBER_DISPLAY"].update(value = f"Number of cards on the deck: {len(deck)}")
+        window["NUMBER_DISPLAY"].update(
+            value = f"Number of cards on the deck: {len(deck)}")
 
     if window == window2 and event == "CARD_BUTTON" and len(deck) > 0:
         print(f"\nNumber of cards on the deck: {len(deck)}")
@@ -115,7 +133,8 @@ while True:
         print("---------", card, "---------")
         deck.remove(card)
 
-        window["NUMBER_DISPLAY"].update(value = f"Number of cards on the deck: {len(deck)}")
+        window["NUMBER_DISPLAY"].update(
+            value = f"Number of cards on the deck: {len(deck)}")
         window["YOUR_CARD"].update(value = card)
         if card in spades or card in clubs:
             window["YOUR_CARD"].update(text_color = "Black")

@@ -52,6 +52,7 @@ while len(deck) != 0:
     print("Number of cards on deck:", len(deck))
     print()
     print("Do you want to draw a card? (y/n)")
+    print("If you wish to restart type (r)")
     choice = input("\n>>>")
     print()
 
@@ -66,4 +67,10 @@ while len(deck) != 0:
         print("The game is Over.")
         exit()
 
-    else : print(f"The input of: {choice} is not valid, please choose between Yes or No")
+    elif choice == "r" or choice == "restart":
+        print("**A new deck has been sorted.**")
+        deck = blackSuits + redSuits
+
+    else :
+        print(
+        f"The input of:{choice} is not valid, please choose between Yes or No")
