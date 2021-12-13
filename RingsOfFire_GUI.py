@@ -121,7 +121,6 @@ while True:
         break
 
     if window == window2 and event == "RESTART_BUTTON":
-        deck = blackSuits + redSuits
         if jokerstate == 0: deck = blackSuits + redSuits
         if jokerstate == 1: deck = blackSuits + redSuits + Jokers
         print("\n********* Game Restarted *********")
