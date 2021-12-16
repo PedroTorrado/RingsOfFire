@@ -5,21 +5,25 @@ figures = ["Jack", "Queen", "King", "Ace"]
 numbers = list(range(2, 11))
 numbers_str = list(map(str, numbers))
 cards = numbers_str + figures
-
+ 
+# defining the names of the suits to be added to each item in the different lists
 hearts_name = " of Hearts"
 diamonds_name = " of Diamonds"
 spades_name = " of Spades"
 clubs_name = " of Clubs"
 
+# defining each suit so items can be added to them
 hearts = ["","","","","","","","","","","","",""]
 diamonds = ["","","","","","","","","","","","",""]
 spades = ["","","","","","","","","","","","",""]
 clubs = ["","","","","","","","","","","","",""]
 
+# function that adds the suit name to each item of the list (and card)
 def suit(suits, suit_name):
     for i in range(len(cards)):
         suits[i] = cards[i] + suit_name
 
+# use of the suit funtion so each element has a card value followed by it's suit
 suit(hearts, hearts_name)
 suit(diamonds, diamonds_name)
 suit(spades, spades_name)
@@ -30,12 +34,17 @@ Jokers = ["Joker", "Joker"]
 blackSuits = clubs + spades
 redSuits = diamonds + hearts
 
+#defining a deck as the totality of all the suits (and jokers)
 deck = blackSuits + redSuits
 
 sg.theme("DarkAmber")
+
+# funtion center created to facilitate the use of funtions in the following format:
+# sg.Stretch(), sg.Text(" "), sg.Stretch()
 def center(item):
     return [sg.Stretch(), *item, sg.Stretch()]
 
+# 1st screen shown to player, asks if jokers are to be included and prompts the user to start the game
 def WarmUp():
     layout = [
         center([sg.Text("--- Welcome to Rings of Fire ---")]),
