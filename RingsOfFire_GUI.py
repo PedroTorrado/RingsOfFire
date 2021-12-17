@@ -157,3 +157,4 @@ while True:
 
     if window == window2 and event == "CARD_BUTTON" and len(deck) == 0: # if the deck is empty the button to pull a card is updated to "Click to exit"
         window["CARD_BUTTON"].update(text = "Click to exit")
+        break
