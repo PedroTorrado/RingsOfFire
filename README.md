@@ -21,4 +21,4 @@ Rings of Fire rules:
 * 10: Truth or dare
 * J: Make a rule
 * Q: Question
-* R: Never have I ever
+* K: Never have I ever
