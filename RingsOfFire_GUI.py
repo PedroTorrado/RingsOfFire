@@ -16,9 +16,7 @@ diamonds = ["","","","","","","","","","","","",""]
 spades = ["","","","","","","","","","","","",""]
 clubs = ["","","","","","","","","","","","",""]
 
-def suit(suits, suit_name):                                                     # function that adds the suit name to each item of the list (and card)
-    for i in range(len(cards)):
-        suits[i] = cards[i] + suit_name
+######################## GAME RULES ############################################
 
 Ace = "Waterfall"
 Two = "You"
@@ -33,6 +31,12 @@ Ten = "Truth or Dare"
 Jack = "Make a Rule"
 Queen = "Question"
 King = "Never Have I Ever"
+
+######################## DEFINING SUITS ########################################
+
+def suit(suits, suit_name):                                                     # function that adds the suit name to each item of the list (and card)
+    for i in range(len(cards)):
+        suits[i] = cards[i] + suit_name
 
 suit(hearts, hearts_name)                                                       # use of the suit funtion so each element has a card value followed by it's suit
 suit(diamonds, diamonds_name)
@@ -111,7 +115,6 @@ def Game():
 
 window1, window2 = WarmUp(), None                                               # defining two windows and declaring the WarmUp() funtion as window1
 
-################################## /GUI DEFINING ###############################
 
 jokerstate = 0                                                                  # defining a the state of jokers as non included to later be used
 print("Jokers won't be included")
