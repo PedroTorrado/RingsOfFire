@@ -29,7 +29,7 @@ Eight = "Mate"
 Nine = "Make a Rhyme"
 Ten = "Truth or Dare"
 Jack = "Make a Rule"
-Queen = "Question"
+Queen = "Buffle Bill"
 King = "Never Have I Ever"
 
 ######################## DEFINING SUITS ########################################
@@ -50,7 +50,9 @@ redSuits = diamonds + hearts
 
 deck = blackSuits + redSuits                                                    # defining a deck as the totality of all the suits (and jokers)
 
-sg.theme("DarkAmber")
+back = True
+
+sg.theme("DarkGrey3")
 
 ######################## GUI DEFINING ##########################################
 
@@ -67,20 +69,21 @@ def WarmUp():                                                                   
         "Jokers won't be included",                                             # Jokers state displayed
             text_color = "Red",
             justification = "center",
-            size=(18,1), key = "DISPLAY")]),
-        center([sg.Button("Start Game")])                                       # Start Button
+            size=(18, 1), key = "DISPLAY")]),
+        center([sg.Button("Start Game")]),                                       # Start Button
+        center([sg.Button("Change Rules")])
     ]
     return sg.Window(
         "WarmUp",                                                               # Window Name / Text
         layout = layout,                                                        # defining the layout designed before
-        size = (250, 150),                                                      # Window Size
+        size = (250, 190),                                                      # Window Size
         finalize = True)
 
 def Game():
     layout = [
         center([sg.Text("The card number will be displayed here",
         justification = "center",
-        size = (30,1),
+        size = (30, 1),
         key = "NUMBER_DISPLAY")]),
 
         center([sg.Text("-----Card Taken-----", pad = (10,10))]),
@@ -95,17 +98,17 @@ def Game():
 
         center([sg.Text("The Rule will be displayed here",
         text_color = "Black",
-        size = (30,1),
+        size = (30, 1),
         justification = "center",
         background_color = "white",
-        pad = (10,0),
+        pad = (10, 0),
         key = "RULE_DISPLAY")]),
 
         center([sg.Button("Pull a card",
-        pad = (10,20),
+        pad = (10, 20),
         key = "CARD_BUTTON")]),
 
-        center([sg.Button("Restart", key = "RESTART_BUTTON")])
+        center([sg.Button("Back", key = "RESTART_BUTTON")])
     ]
     return sg.Window(
         "Game",
@@ -113,8 +116,22 @@ def Game():
         size = (275, 225),
         finalize = True)
 
-window1, window2 = WarmUp(), None                                               # defining two windows and declaring the WarmUp() funtion as window1
+def RuleDefining():
+    layout = [
+        center([sg.Text("Defining the Rules")]),
+        center([sg.Text("Card")]),
+        center([sg.Text("Rule Input")]),
+        center([sg.Button("Next")]),
+        center([sg.Button("Back")])
+    ]
+    return sg.Window(
+        "RuleDefining",
+        layout = layout,
+        size = (275, 155),
+        finalize = True
+    )
 
+window1, window2, window3 = WarmUp(), None, None                                # defining two windows and declaring the WarmUp() funtion as window1
 
 jokerstate = 0                                                                  # defining a the state of jokers as non included to later be used
 print("Jokers won't be included")
@@ -187,9 +204,18 @@ while True:
             deck = deck + Jokers                                                # to include jokers the jokers list is added to the deck list making it a 54 item list
             print("Cards on a deck:", len(deck))
 
+    elif window == window1 and event == "Change Rules":
+        window1.hide()
+        window3 = RuleDefining()
+
     if window == window2 and event == sg.WINDOW_CLOSED:                         # sg.WINDOW_CLOSED is the action of clicking the top right exit button of a window
         print("\n ********* Game Ended by user *********")
         break                                                                   # by breaking the while loop the window and therefore the program closes
+
+    if event == "RESTART_BUTTON" and back == True:
+        print("******** Back to Main Menu ********")
+        window2.hide()
+        window1 = WarmUp()
 
     if window == window2 and event == "RESTART_BUTTON":                         # if the restart button is pressed
                                                                                 # the jokerstate is checked to see which deck was being used, a 52 card or a 54
@@ -199,8 +225,11 @@ while True:
         window["NUMBER_DISPLAY"].update(                                        # the display which shows the number of cards in a deck gets updated to show the deck is full
             value = f"Number of cards on the deck: {len(deck)}")
         window["YOUR_CARD"].update(
-            value = "Your card will be displayed here",
+            value = "Your Card will be displayed here",
             text_color = "Black")
+        window["RESTART_BUTTON"].update("Back")
+        window["RULE_DISPLAY"].update(value = "The Rule will be displayed here")
+        back = True
 
     if window == window2 and event == "CARD_BUTTON" and len(deck) > 0:          # if a card is pulled from the deck
         print(f"\nNumber of cards on the deck: {len(deck)}")                    # the numbers of card on the deck is presented on a CMD line
@@ -221,6 +250,27 @@ while True:
         else:                                                                   # if the card is a Joker it's shown in green lettering
             window["YOUR_CARD"].update(text_color = "Green")
 
+        if jokerstate == 0 and len(deck) != 52:
+            window["RESTART_BUTTON"].update("Restart")
+            back = False
+
+        elif jokerstate == 1 and len(deck) != 54:
+            window["RESTART_BUTTON"].update("Restart")
+            back = False
+
+        else:
+            window["RESTART_BUTTON"].update("Back")
+            back = True
+
+
     if window == window2 and event == "CARD_BUTTON" and len(deck) == 0:         # if the deck is empty the button to pull a card is updated to "Click to exit"
         window["CARD_BUTTON"].update(text = "Click to exit")
         break
+
+    if window == window3 and event == sg.WINDOW_CLOSED:                         # sg.WINDOW_CLOSED is the action of clicking the top right exit button of a window
+        print("\n ********* Game Ended by user *********")
+        break
+
+    if window == window3 and event == "Back":
+        window3.hide()
+        window1 = WarmUp()
