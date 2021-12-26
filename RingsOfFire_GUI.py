@@ -18,6 +18,8 @@ clubs = ["","","","","","","","","","","","",""]
 
 ######################## GAME RULES ############################################
 
+Cards = ["Ace", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "Joker"]
+
 Ace = "Waterfall"
 Two = "You"
 Three = "Me"
@@ -119,8 +121,8 @@ def Game():
 def RuleDefining():
     layout = [
         center([sg.Text("Defining the Rules")]),
-        center([sg.Text("Card")]),
-        center([sg.Text("Rule Input")]),
+        center([sg.Combo(cards, default_value = "Choose your card", key = "combo", size = (20,1))]),
+        center([sg.Input("Write your Rule here", key = "New_Rule")]),
         center([sg.Button("Next")]),
         center([sg.Button("Back")])
     ]
@@ -138,32 +140,34 @@ print("Jokers won't be included")
 
 def rules():
 
-    if "Ace" in card :
+    if "Ace" in card:
         rule = Ace
-    elif "2" in card :
+    elif "2" in card:
         rule = Two
-    elif "3" in card :
+    elif "3" in card:
         rule = Three
-    elif "4" in card :
+    elif "4" in card:
         rule = Four
-    elif "5" in card :
+    elif "5" in card:
         rule = Five
-    elif "6" in card :
+    elif "6" in card:
         rule = Six
-    elif "7" in card :
+    elif "7" in card:
         rule = Seven
-    elif "8" in card :
+    elif "8" in card:
         rule = Eight
-    elif "9" in card :
+    elif "9" in card:
         rule = Nine
-    elif "10" in card :
+    elif "10" in card:
         rule = Ten
-    elif "Jack" in card :
+    elif "Jack" in card:
         rule = Jack
-    elif "Queen" in card :
+    elif "Queen" in card:
         rule = Queen
-    elif "King" in card :
+    elif "King" in card:
         rule = King
+    elif "Joker" in card:
+        rule = Joker
     else:
         rule = card
 
@@ -264,8 +268,8 @@ while True:
 
 
     if window == window2 and event == "CARD_BUTTON" and len(deck) == 0:         # if the deck is empty the button to pull a card is updated to "Click to exit"
-        window["CARD_BUTTON"].update(text = "Click to exit")
-        break
+        window["YOUR_CARD"].update("Game Over")
+
 
     if window == window3 and event == sg.WINDOW_CLOSED:                         # sg.WINDOW_CLOSED is the action of clicking the top right exit button of a window
         print("\n ********* Game Ended by user *********")
@@ -274,3 +278,51 @@ while True:
     if window == window3 and event == "Back":
         window3.hide()
         window1 = WarmUp()
+
+    if window == window3 and event == "Next":
+        if values["New_Rule"] == "Write your Rule here":
+            window["New_Rule"].update(text_color = "Red")
+        else:
+            window["New_Rule"].update(" ")
+
+        if values["combo"] == "2":
+            Two = values["New_Rule"]
+
+        elif values["combo"] == "3":
+            Three = values["New_Rule"]
+
+        elif values["combo"] == "4":
+            Four = values["New_Rule"]
+
+        elif values["combo"] == "5":
+            Five = values["New_Rule"]
+
+        elif values["combo"] == "6":
+            Six = values["New_Rule"]
+
+        elif values["combo"] == "7":
+            Seven = values["New_Rule"]
+
+        elif values["combo"] == "8":
+            Eight = values["New_Rule"]
+
+        elif values["combo"] == "9":
+            Nine = values["New_Rule"]
+
+        elif values["combo"] == "10":
+            Ten = values["New_Rule"]
+
+        elif values["combo"] == "Jack":
+            Jack = values["New_Rule"]
+
+        elif values["combo"] == "Queen":
+            Queen = values["New_Rule"]
+
+        elif values["combo"] == "King":
+            King = values["New_Rule"]
+
+        elif values["combo"] == "Joker":
+            Two = values["New_Rule"]
+
+        else:
+            print("Error")
