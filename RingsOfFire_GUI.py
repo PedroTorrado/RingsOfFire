@@ -18,7 +18,9 @@ clubs = ["","","","","","","","","","","","",""]
 
 ######################## GAME RULES ############################################
 
-Cards = ["Ace", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "Joker"]
+Cards = ["Ace", "Two", "Three", "Four",
+        "Five", "Six", "Seven", "Eight",
+        "Nine", "Ten", "Jack", "Queen", "Joker"]
 
 Ace = "Waterfall"
 Two = "You"
@@ -33,6 +35,7 @@ Ten = "Truth or Dare"
 Jack = "Make a Rule"
 Queen = "Buffle Bill"
 King = "Never Have I Ever"
+Joker = "Joker"
 
 ######################## DEFINING SUITS ########################################
 
@@ -121,9 +124,11 @@ def Game():
 def RuleDefining():
     layout = [
         center([sg.Text("Defining the Rules")]),
-        center([sg.Combo(cards, default_value = "Choose your card", key = "combo", size = (20,1))]),
-        center([sg.Input("Write your Rule here", key = "New_Rule")]),
-        center([sg.Button("Next")]),
+        center([sg.Combo(Cards, default_value = "Choose your card",
+        key = "combo", size = (20,1))]),
+        center([sg.Input("Write your Rule here",
+        key = "New_Rule")]),
+        center([sg.Button("Next", bind_return_key = True)]),
         center([sg.Button("Back")])
     ]
     return sg.Window(
@@ -280,49 +285,53 @@ while True:
         window1 = WarmUp()
 
     if window == window3 and event == "Next":
-        if values["New_Rule"] == "Write your Rule here":
-            window["New_Rule"].update(text_color = "Red")
-        else:
-            window["New_Rule"].update(" ")
 
-        if values["combo"] == "2":
-            Two = values["New_Rule"]
+        window["New_Rule"].update(" ")
 
-        elif values["combo"] == "3":
-            Three = values["New_Rule"]
-
-        elif values["combo"] == "4":
-            Four = values["New_Rule"]
-
-        elif values["combo"] == "5":
-            Five = values["New_Rule"]
-
-        elif values["combo"] == "6":
-            Six = values["New_Rule"]
-
-        elif values["combo"] == "7":
-            Seven = values["New_Rule"]
-
-        elif values["combo"] == "8":
-            Eight = values["New_Rule"]
-
-        elif values["combo"] == "9":
-            Nine = values["New_Rule"]
-
-        elif values["combo"] == "10":
-            Ten = values["New_Rule"]
-
-        elif values["combo"] == "Jack":
-            Jack = values["New_Rule"]
-
-        elif values["combo"] == "Queen":
-            Queen = values["New_Rule"]
-
-        elif values["combo"] == "King":
-            King = values["New_Rule"]
-
-        elif values["combo"] == "Joker":
-            Two = values["New_Rule"]
-
-        else:
-            print("Error")
+        if values["New_Rule"] != "Write your Rule here" and values["New_Rule"] != "No Rule was defined"and values["New_Rule"] != "Card not defined":
+            if values["combo"] == "Ace":
+                Ace = values["New_Rule"]
+                print("Ace was changed to :", values["New_Rule"])
+            elif values["combo"] == "Two":
+                Two = values["New_Rule"]
+                print("Two was changed to :", values["New_Rule"])
+            elif values["combo"] == "Three":
+                Three = values["New_Rule"]
+                print("Three was changed to :", values["New_Rule"])
+            elif values["combo"] == "Four":
+                Four = values["New_Rule"]
+                print("Four was changed to :", values["New_Rule"])
+            elif values["combo"] == "Five":
+                Five = values["New_Rule"]
+                print("Five was changed to :", values["New_Rule"])
+            elif values["combo"] == "Six":
+                Six = values["New_Rule"]
+                print("Six was changed to :", values["New_Rule"])
+            elif values["combo"] == "Seven":
+                Seven = values["New_Rule"]
+                print("Seven was changed to :", values["New_Rule"])
+            elif values["combo"] == "Eight":
+                Eight = values["New_Rule"]
+                print("Eight was changed to :", values["New_Rule"])
+            elif values["combo"] == "Nine":
+                Nine = values["New_Rule"]
+                print("Nine was changed to :", values["New_Rule"])
+            elif values["combo"] == "Ten":
+                Ten = values["New_Rule"]
+                print("Ten was changed to :", values["New_Rule"])
+            elif values["combo"] == "Jack":
+                Jack = values["New_Rule"]
+                print("Jack was changed to :", values["New_Rule"])
+            elif values["combo"] == "Queen":
+                Queen = values["New_Rule"]
+                print("Queen was changed to :", values["New_Rule"])
+            elif values["combo"] == "King":
+                King = values["New_Rule"]
+                print("King was changed to :", values["New_Rule"])
+            elif values["combo"] == "Joker":
+                Joker = values["New_Rule"]
+                print("Joker was changed to :", values["New_Rule"])
+            else:
+                print("Error")
+                window["New_Rule"].update("Card not defined")
+        else: window["New_Rule"]. update("No Rule was defined")
