@@ -124,17 +124,20 @@ def Game():
 def RuleDefining():
     layout = [
         center([sg.Text("Defining the Rules")]),
-        center([sg.Combo(Cards, default_value = "Choose your card",
-        key = "combo", size = (20,1))]),
+        [sg.Combo(Cards, default_value = "Choose your card",
+        key = "combo",
+        size = (20,1),
+        pad = (10, 20))],
         center([sg.Input("Write your Rule here",
         key = "New_Rule")]),
-        center([sg.Button("Next", bind_return_key = True)]),
-        center([sg.Button("Back")])
+        center([sg.Button("Next", pad = (10, 20), bind_return_key = True),
+        sg.Button("Rules", pad = (10, 20)),
+        sg.Button("Done", key = "Back", pad = (10, 20))])
     ]
     return sg.Window(
         "RuleDefining",
         layout = layout,
-        size = (275, 155),
+        size = (300, 190),
         finalize = True
     )
 
