@@ -157,7 +157,9 @@ def ListRules():
         return [sg.Text(f"{CardFace} is for : {CardsFaceValue}", key = CardKey)]
 
     layout = [
-        center([sg.Text("This are the rules:")]),
+        center([sg.Text("This are the rules:",
+        background_color = "White",
+        text_color = "Black")]),
         [sg.Text(f"Ace is for : {Ace}", key = "Ace")],
         printCard(Cards[1], Two, "Two"),
         printCard(Cards[2], Three, "Three"),
