@@ -5,6 +5,8 @@ figures = ["Jack", "Queen", "King", "Ace"]
 numbers = list(range(2, 11))
 numbers_str = list(map(str, numbers))
 cards = numbers_str + figures
+window4Open = 0
+
 
 hearts_name = " of Hearts"                                                      # defining the names of the suits to be added to each item in the different lists
 diamonds_name = " of Diamonds"
@@ -20,7 +22,9 @@ clubs = ["","","","","","","","","","","","",""]
 
 Cards = ["Ace", "Two", "Three", "Four",
         "Five", "Six", "Seven", "Eight",
-        "Nine", "Ten", "Jack", "Queen", "Joker"]
+        "Nine", "Ten", "Jack", "Queen", "King", "Joker"]
+
+print(*Cards)
 
 Ace = "Waterfall"
 Two = "You"
@@ -68,14 +72,19 @@ def WarmUp():                                                                   
     layout = [
                                                                                 #defining different objects from PySimpleGUI to use on the first window
         center([sg.Text("--- Welcome to Rings of Fire ---")]),                  # Top Text
+
         center([sg.Text("Do you wish to include Jokers?")]),                    # Under text question
+
         center([sg.Button("Jokers")]),                                          # Button Text
+
         center([sg.Text(
         "Jokers won't be included",                                             # Jokers state displayed
             text_color = "Red",
             justification = "center",
             size=(18, 1), key = "DISPLAY")]),
+
         center([sg.Button("Start Game")]),                                       # Start Button
+
         center([sg.Button("Change Rules")])
     ]
     return sg.Window(
@@ -110,7 +119,7 @@ def Game():
         key = "RULE_DISPLAY")]),
 
         center([sg.Button("Pull a card",
-        pad = (10, 20),
+        pad = (10, 5),
         key = "CARD_BUTTON")]),
 
         center([sg.Button("Back", key = "RESTART_BUTTON")])
@@ -128,8 +137,10 @@ def RuleDefining():
         key = "combo",
         size = (20,1),
         pad = (10, 20))],
+
         center([sg.Input("Write your Rule here",
         key = "New_Rule")]),
+
         center([sg.Button("Next", pad = (10, 20), bind_return_key = True),
         sg.Button("Rules", pad = (10, 20)),
         sg.Button("Done", key = "Back", pad = (10, 20))])
@@ -141,7 +152,36 @@ def RuleDefining():
         finalize = True
     )
 
-window1, window2, window3 = WarmUp(), None, None                                # defining two windows and declaring the WarmUp() funtion as window1
+def ListRules():
+    def printCard(CardFace, CardsFaceValue, CardKey):
+        return [sg.Text(f"{CardFace} is for : {CardsFaceValue}", key = CardKey)]
+
+    layout = [
+        center([sg.Text("This are the rules:")]),
+        [sg.Text(f"Ace is for : {Ace}", key = "Ace")],
+        printCard(Cards[1], Two, "Two"),
+        printCard(Cards[2], Three, "Three"),
+        printCard(Cards[3], Four, "Four"),
+        printCard(Cards[4], Five, "Five"),
+        printCard(Cards[5], Six, "Six"),
+        printCard(Cards[6], Seven, "Seven"),
+        printCard(Cards[7], Eight, "Eight"),
+        printCard(Cards[8], Nine, "Nine"),
+        printCard(Cards[9], Ten, "Ten"),
+        printCard(Cards[10], Jack, "Jack"),
+        printCard(Cards[11], Queen, "Queen"),
+        printCard(Cards[12], King, "King"),
+        printCard(Cards[13], Joker, "Joker"),
+        [sg.Button("Update")]
+    ]
+    return sg.Window(
+        "ListRules",
+        layout = layout,
+        size = (250, 430),
+        finalize = True
+    )
+
+window1, window2, window3, window4 = WarmUp(), None, None, None                           # defining two windows and declaring the WarmUp() funtion as window1
 
 jokerstate = 0                                                                  # defining a the state of jokers as non included to later be used
 print("Jokers won't be included")
@@ -347,4 +387,14 @@ while True:
                 print("Error")
                 window["New_Rule"].update("Card not defined")
 
-        else: window["New_Rule"]. update("No Rule was defined")
+        else: window["New_Rule"].update("No Rule was defined")
+
+    elif window == window3  and event == "Rules":
+        window4 = ListRules()
+
+    elif window == window4 and event == sg.WINDOW_CLOSED:
+        window.close()
+
+    elif window == window4 and event == "Update":
+        window.close()
+        window4 = ListRules()
