@@ -173,13 +173,12 @@ def ListRules():
         printCard(Cards[10], Jack, "Jack"),
         printCard(Cards[11], Queen, "Queen"),
         printCard(Cards[12], King, "King"),
-        printCard(Cards[13], Joker, "Joker"),
-        [sg.Button("Update")]
+        printCard(Cards[13], Joker, "Joker")
     ]
     return sg.Window(
         "ListRules",
         layout = layout,
-        size = (250, 430),
+        size = (250, 400),
         finalize = True
     )
 
