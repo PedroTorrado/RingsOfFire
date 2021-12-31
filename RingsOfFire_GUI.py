@@ -391,12 +391,15 @@ while True:
 
         else: window["New_Rule"].update("No Rule was defined")
 
+        if window4Open == 1:
+            window4.close()
+            window4 = ListRules()
+
     elif window == window3  and event == "Rules":
-        window4 = ListRules()
+        if window4Open == 0:
+            window4 = ListRules()
+            window4Open = 1
 
     elif window == window4 and event == sg.WINDOW_CLOSED:
         window.close()
-
-    elif window == window4 and event == "Update":
-        window.close()
-        window4 = ListRules()
+        window4Open = 0
