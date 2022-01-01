@@ -95,7 +95,7 @@ def WarmUp():                                                                   
 
 def Game():
     layout = [
-        center([sg.Text("The card number will be displayed here",
+        center([sg.Text("The number of cards will be displayed here",
         justification = "center",
         size = (30, 1),
         key = "NUMBER_DISPLAY")]),
@@ -118,6 +118,8 @@ def Game():
         pad = (10, 0),
         key = "RULE_DISPLAY")]),
 
+        [sg.Stretch()],
+
         center([sg.Button("Pull a card",
         pad = (10, 5),
         key = "CARD_BUTTON")]),
@@ -127,7 +129,7 @@ def Game():
     return sg.Window(
         "Game",
         layout = layout,
-        size = (275, 225),
+        size = (290, 210),
         finalize = True)
 
 def RuleDefining():
