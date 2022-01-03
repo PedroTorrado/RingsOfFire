@@ -184,7 +184,7 @@ def ListRules():
         finalize = True
     )
 
-window1, window2, window3, window4 = WarmUp(), None, None, None                           # defining two windows and declaring the WarmUp() funtion as window1
+window1, window2, window3, window4 = WarmUp(), None, None, None                 # defining two windows and declaring the WarmUp() funtion as window1
 
 jokerstate = 0                                                                  # defining a the state of jokers as non included to later be used
 print("Jokers won't be included")
@@ -395,11 +395,15 @@ while True:
         if window4Open == 1:
             window4.close()
             window4 = ListRules()
+            window4.Move(window3X + 310 , window3Y - 100)
 
     elif window == window3  and event == "Rules":
         if window4Open == 0:
             window4 = ListRules()
             window4Open = 1
+            loc3 = window3.CurrentLocation()
+            window3X, window3Y = loc3
+            window4.Move(window3X + 310 , window3Y - 100)
 
     elif window == window4 and event == sg.WINDOW_CLOSED:
         window.close()
