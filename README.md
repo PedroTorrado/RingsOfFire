@@ -25,13 +25,13 @@ Rings of Fire rules:
 
 Main Screen:
 
-<img src="https://github.com/PedroTorrado/RingsOfFire/blob/main/Images/Main_Screen_WarmUp.png" alt="Main Screen" width="100"/>
+<img src="https://github.com/PedroTorrado/RingsOfFire/blob/main/Images/Main_Screen_WarmUp.png" alt="Main Screen"/>
 
 
 Rules Changing and Checking:
 
-<img src="https://github.com/PedroTorrado/RingsOfFire/blob/main/Images/Rules_Screen_RuleDefining_ListRules.png" alt="Rules Screen" width="100"/>
+<img src="https://github.com/PedroTorrado/RingsOfFire/blob/main/Images/Rules_Screen_RuleDefining_ListRules.png" alt="Rules Screen"/>
 
 Rings of Fire:
 
-<img src="https://github.com/PedroTorrado/RingsOfFire/blob/main/Images/RingsOfFire_Game.png" alt="Rules Screen" width="100"/>
+<img src="https://github.com/PedroTorrado/RingsOfFire/blob/main/Images/RingsOfFire_Game.png" alt="Rules Screen"/>
