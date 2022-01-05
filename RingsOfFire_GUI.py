@@ -1,5 +1,5 @@
 import random
-from PySimpleGUI import PySimpleGUI as sg
+import PySimpleGUI as sg
 
 figures = ["Jack", "Queen", "King", "Ace"]
 numbers = list(range(2, 11))
