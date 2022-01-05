@@ -23,4 +23,15 @@ Rings of Fire rules:
 * Q: Question
 * K: Never have I ever
 
-<img src="" alt="Main Screen" width="100"/>
+Main Screen:
+
+<img src="https://github.com/PedroTorrado/RingsOfFire/blob/main/Images/Main_Screen_WarmUp.png" alt="Main Screen" width="100"/>
+
+
+Rules Changing and Checking:
+
+<img src="https://github.com/PedroTorrado/RingsOfFire/blob/main/Images/Rules_Screen_RuleDefining_ListRules.png" alt="Rules Screen" width="100"/>
+
+Rings of Fire:
+
+<img src="https://github.com/PedroTorrado/RingsOfFire/blob/main/Images/RingsOfFire_Game.png" alt="Rules Screen" width="100"/>
