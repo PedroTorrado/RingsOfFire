@@ -27,7 +27,6 @@ Main Screen:
 
 <img src="https://github.com/PedroTorrado/RingsOfFire/blob/main/Images/Main_Screen_WarmUp.png" alt="Main Screen"/>
 
-
 Rules Changing and Checking:
 
 <img src="https://github.com/PedroTorrado/RingsOfFire/blob/main/Images/Rules_Screen_RuleDefining_ListRules.png" alt="Rules Screen"/>
