@@ -337,7 +337,7 @@ while True:
 
         window["New_Rule"].update(" ")
 
-        dont = ["Write your Rule here",
+        dont = ["Write your Rule here",                                         # list of rules that are not accepted since most of them are part of the program itself and error checking
         "No Rule was defined",
         "Card not defined",
         " ",
@@ -401,10 +401,10 @@ while True:
         if window4Open == 0:
             window4 = ListRules()
             window4Open = 1
-            loc3 = window3.CurrentLocation()
-            window3X, window3Y = loc3
-            window4.Move(window3X + 310 , window3Y - 100)
-
+            loc3 = window3.CurrentLocation()                                    # gets the coordenates of the rule defining window and equals it to loc3 variable
+            window3X, window3Y = loc3                                           # turns the two values in the list into separate variables for x and y coordenates
+            window4.Move(window3X + 310 , window3Y - 100)                       # moves the rules list window so it's set to the side of the rule defining window
+                                                                                # using this the window doesn't get creates on top of the rule defiing window, the same when it's updated
     elif window == window4 and event == sg.WINDOW_CLOSED:
         window.close()
         window4Open = 0
