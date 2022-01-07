@@ -162,6 +162,7 @@ def ListRules():
         center([sg.Text("This are the rules:",
         background_color = "White",
         text_color = "Black")]),
+
         printCard(Cards[0], Ace, "Ace"),
         printCard(Cards[1], Two, "Two"),
         printCard(Cards[2], Three, "Three"),
