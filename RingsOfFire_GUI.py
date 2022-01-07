@@ -162,7 +162,7 @@ def ListRules():
         center([sg.Text("This are the rules:",
         background_color = "White",
         text_color = "Black")]),
-        [sg.Text(f"Ace is for : {Ace}", key = "Ace")],
+        printCard(Cards[0], Ace, "Ace"),
         printCard(Cards[1], Two, "Two"),
         printCard(Cards[2], Three, "Three"),
         printCard(Cards[3], Four, "Four"),
@@ -191,7 +191,7 @@ print("Jokers won't be included")
 
 def rules():
 
-    if "Ace" in card:
+    if "Ace" in card:                                                           # defining the rule based only on the face of the card and ignoring it's suit
         rule = Ace
     elif "2" in card:
         rule = Two
