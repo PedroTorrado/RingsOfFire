@@ -1,5 +1,5 @@
 # RingsOfFire
-The main objective of this program is to make a terminal based of Rings Of Fire
+The main objective of this program is to create a terminal based version of Rings Of Fire
 and also a version of it with a GUI
 in order for it to be played in any situation even if a deck of cards is not
 available.  
