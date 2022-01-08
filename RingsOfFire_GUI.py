@@ -7,7 +7,6 @@ numbers_str = list(map(str, numbers))
 cards = numbers_str + figures
 window4Open = 0
 
-
 hearts_name = " of Hearts"                                                      # defining the names of the suits to be added to each item in the different lists
 diamonds_name = " of Diamonds"
 spades_name = " of Spades"
@@ -61,7 +60,7 @@ deck = blackSuits + redSuits                                                    
 
 back = True
 
-sg.theme("DarkGrey3")
+sg.theme("Topanga")
 
 ######################## GUI DEFINING ##########################################
 
