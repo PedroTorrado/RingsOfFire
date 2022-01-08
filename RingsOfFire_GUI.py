@@ -66,7 +66,13 @@ sg.theme("DarkGrey3")
 ######################## GUI DEFINING ##########################################
 
 def center(item):                                                               # funtion center created to facilitate the use of funtions in the following format:
-    return [sg.Stretch(), *item, sg.Stretch()]                                      # sg.Stretch(), sg.Text(" "), sg.Stretch()
+    return [sg.Stretch(), *item, sg.Stretch()]                                    # sg.Stretch(), sg.Text(" "), sg.Stretch()
+
+def whiteSpace():
+    return center([sg.Text(size = (20,1),
+    background_color = "white",
+    pad = (10, 0),)])
+
 
 def WarmUp():                                                                   # 1st screen shown to player, asks if jokers are to be included and prompts the user to start the game
     layout = [
@@ -102,23 +108,44 @@ def Game():
 
         center([sg.Text("-----Card Taken-----", pad = (10,10))]),
 
-        center([sg.Text("Your Card will be displayed here",
+        center([sg.Text("Card",
         text_color = "Black",
-        size = (30,1),
+        size = (20,1),
+        background_color = "white",
+        pad = (10, 0),
+        key = "YOUR_CARD_FACE_TOP")]),
+
+        whiteSpace(),
+        whiteSpace(),
+        whiteSpace(),
+
+        center([sg.Text("Card",
+        text_color = "Black",
+        size = (20,1),
         justification = "center",
         background_color = "white",
         pad = (10, 0),
         key = "YOUR_CARD")]),
 
-        center([sg.Text("The Rule will be displayed here",
+        center([sg.Text("Rule",
         text_color = "Black",
-        size = (30, 1),
+        size = (20, 1),
         justification = "center",
         background_color = "white",
         pad = (10, 0),
         key = "RULE_DISPLAY")]),
 
-        [sg.Stretch()],
+        whiteSpace(),
+        whiteSpace(),
+        whiteSpace(),
+
+        center([sg.Text("Card",
+        text_color = "Black",
+        size = (20,1),
+        justification = "right",
+        background_color = "white",
+        pad = (10, 0),
+        key = "YOUR_CARD_FACE_BOTTOM")]),
 
         center([sg.Button("Pull a card",
         pad = (10, 5),
@@ -129,7 +156,7 @@ def Game():
     return sg.Window(
         "Game",
         layout = layout,
-        size = (290, 210),
+        size = (290, 350),
         finalize = True)
 
 def RuleDefining():
@@ -192,34 +219,52 @@ print("Jokers won't be included")
 
 def rules():
 
+    def updateFace(face):
+        window["YOUR_CARD_FACE_TOP"].update(face)
+        window["YOUR_CARD_FACE_BOTTOM"].update(face)
+
     if "Ace" in card:                                                           # defining the rule based only on the face of the card and ignoring it's suit
         rule = Ace
+        updateFace("ACE")
     elif "2" in card:
         rule = Two
+        updateFace("2")
     elif "3" in card:
         rule = Three
+        updateFace("3")
     elif "4" in card:
         rule = Four
+        updateFace("4")
     elif "5" in card:
         rule = Five
+        updateFace("5")
     elif "6" in card:
         rule = Six
+        updateFace("6")
     elif "7" in card:
         rule = Seven
+        updateFace("7")
     elif "8" in card:
         rule = Eight
+        updateFace("8")
     elif "9" in card:
         rule = Nine
+        updateFace("9")
     elif "10" in card:
         rule = Ten
+        updateFace("10")
     elif "Jack" in card:
         rule = Jack
+        updateFace("JACK")
     elif "Queen" in card:
         rule = Queen
+        updateFace("QUEEN")
     elif "King" in card:
         rule = King
+        updateFace("KING")
     elif "Joker" in card:
         rule = Joker
+        updateFace("JOKER")
     else:
         rule = card
 
@@ -284,10 +329,10 @@ while True:
         window["NUMBER_DISPLAY"].update(                                        # the display which shows the number of cards in a deck gets updated to show the deck is full
             value = f"Number of cards on the deck: {len(deck)}")
         window["YOUR_CARD"].update(
-            value = "Your Card will be displayed here",
+            value = "Card",
             text_color = "Black")
         window["RESTART_BUTTON"].update("Back")
-        window["RULE_DISPLAY"].update(value = "The Rule will be displayed here")
+        window["RULE_DISPLAY"].update(value = "Rule")
         back = True
 
     elif window == window2 and event == "CARD_BUTTON" and len(deck) > 0:          # if a card is pulled from the deck
@@ -304,10 +349,16 @@ while True:
 
         if card in blackSuits:                                                  # if the card belongs to one of the black suits it's shown in black lettering
             window["YOUR_CARD"].update(text_color = "Black")
+            window["YOUR_CARD_FACE_TOP"].update(text_color = "Black")
+            window["YOUR_CARD_FACE_BOTTOM"].update(text_color = "Black")
         elif card in redSuits:                                                  # if the card belongs to one of the red suits it's shown in red lettering
             window["YOUR_CARD"].update(text_color = "Red")
+            window["YOUR_CARD_FACE_TOP"].update(text_color = "Red")
+            window["YOUR_CARD_FACE_BOTTOM"].update(text_color = "Red")
         else:                                                                   # if the card is a Joker it's shown in green lettering
             window["YOUR_CARD"].update(text_color = "Green")
+            window["YOUR_CARD_FACE_TOP"].update(text_color = "Green")
+            window["YOUR_CARD_FACE_BOTTOM"].update(text_color = "Green")
 
         if jokerstate == 0 and len(deck) != 52:
             window["RESTART_BUTTON"].update("Restart")
