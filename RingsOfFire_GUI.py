@@ -103,7 +103,6 @@ def Game():
     layout = [
         center([sg.Text("The number of cards will be displayed here",
         justification = "center",
-        size = (30, 1),
         key = "NUMBER_DISPLAY")]),
 
         center([sg.Text("-----Card Taken-----", pad = (10,10))]),
