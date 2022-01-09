@@ -97,6 +97,7 @@ def WarmUp():                                                                   
         "WarmUp",                                                               # Window Name / Text
         layout = layout,                                                        # defining the layout designed before
         size = (250, 200),                                                      # Window Size
+        icon="Images/icon.png",
         finalize = True)
 
 def Game():
@@ -153,9 +154,10 @@ def Game():
         center([sg.Button("Back", key = "RESTART_BUTTON")])
     ]
     return sg.Window(
-        "Game",
+        "Rings of Fire",
         layout = layout,
         size = (290, 350),
+        icon="Images/icon.png",
         finalize = True)
 
 def RuleDefining():
@@ -177,6 +179,7 @@ def RuleDefining():
         "RuleDefining",
         layout = layout,
         size = (300, 190),
+        icon="Images/icon.png",
         finalize = True
     )
 
@@ -208,6 +211,7 @@ def ListRules():
         "ListRules",
         layout = layout,
         size = (250, 400),
+        icon="Images/icon.png",
         finalize = True
     )
 
