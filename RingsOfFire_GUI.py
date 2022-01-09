@@ -68,7 +68,8 @@ def center(item):                                                               
     return [sg.Stretch(), *item, sg.Stretch()]                                    # sg.Stretch(), sg.Text(" "), sg.Stretch()
 
 def whiteSpace():
-    return center([sg.Text(size = (20,1),
+    return center([
+    sg.Text(size = (20,1),
     background_color = "white",
     pad = (10, 0),)])
 
@@ -88,14 +89,14 @@ def WarmUp():                                                                   
             justification = "center",
             size=(18, 1), key = "DISPLAY")]),
 
-        center([sg.Button("Start Game")]),                                       # Start Button
+        center([sg.Button("Play ➤", key = "Start Game", size = (7,1))]),                                       # Start Button
 
-        center([sg.Button("Change Rules")])
+        center([sg.Button("Change Rules ⛭", key = "Change Rules")])
     ]
     return sg.Window(
         "WarmUp",                                                               # Window Name / Text
         layout = layout,                                                        # defining the layout designed before
-        size = (250, 190),                                                      # Window Size
+        size = (250, 200),                                                      # Window Size
         finalize = True)
 
 def Game():
