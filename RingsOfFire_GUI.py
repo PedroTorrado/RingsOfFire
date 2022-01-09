@@ -158,7 +158,7 @@ def Game():
         layout = layout,
         size = (290, 350),
         icon="Images/icon.png",
-        finalize = True,)
+        finalize = True)
 
 def RuleDefining():
     layout = [
