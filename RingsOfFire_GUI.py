@@ -387,11 +387,11 @@ while True:
 
         if window4Open == 1:
             window1 = WarmUp()
+            window4.close()
             window4 = ListRules()
             loc1 = window1.CurrentLocation()                                        # gets the coordenates of the rule defining window and equals it to loc3 variable
             window1X, window1Y = loc1                                               # turns the two values in the list into separate variables for x and y coordenates
-
-        window4.Move(window1X + 270 , window1Y - 100)
+            window4.Move(window1X + 270 , window1Y - 100)
 
     elif window == window3 and event == "Next":
 
