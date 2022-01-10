@@ -17,6 +17,15 @@ diamonds = ["","","","","","","","","","","","",""]
 spades = ["","","","","","","","","","","","",""]
 clubs = ["","","","","","","","","","","","",""]
 
+import os
+print(os.name)
+if 'nt' in os.name:
+    #windows
+    icon = "Images/Icon/icon.ico"
+else:
+    #not windows
+    icon = "Images/Icon/icon.png"
+
 ######################## GAME RULES ############################################
 
 Cards = ["Ace", "Two", "Three", "Four",
@@ -97,7 +106,7 @@ def WarmUp():                                                                   
         "WarmUp",                                                               # Window Name / Text
         layout = layout,                                                        # defining the layout designed before
         size = (250, 200),                                                      # Window Size
-        icon="Images/icon.png",
+        icon=icon,
         finalize = True)
 
 def Game():
@@ -157,7 +166,7 @@ def Game():
         "Rings of Fire",
         layout = layout,
         size = (290, 350),
-        icon="Images/icon.png",
+        icon=icon,
         finalize = True)
 
 def RuleDefining():
@@ -179,7 +188,7 @@ def RuleDefining():
         "RuleDefining",
         layout = layout,
         size = (300, 190),
-        icon="Images/icon.png",
+        icon=icon,
         finalize = True
     )
 
@@ -211,7 +220,7 @@ def ListRules():
         "ListRules",
         layout = layout,
         size = (250, 400),
-        icon="Images/icon.png",
+        icon=icon,
         finalize = True
     )
 
