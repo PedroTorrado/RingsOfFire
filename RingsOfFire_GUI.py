@@ -12,10 +12,10 @@ diamonds_name = " of Diamonds"
 spades_name = " of Spades"
 clubs_name = " of Clubs"
 
-hearts = ["","","","","","","","","","","","",""]                               # defining each suit so items can be added to them
-diamonds = ["","","","","","","","","","","","",""]
-spades = ["","","","","","","","","","","","",""]
-clubs = ["","","","","","","","","","","","",""]
+hearts = []                                                                     # defining each suit so items can be added to them
+diamonds = []
+spades = []
+clubs = []
 
 import os
 print(os.name)
@@ -31,8 +31,6 @@ else:
 Cards = ["Ace", "Two", "Three", "Four",
         "Five", "Six", "Seven", "Eight",
         "Nine", "Ten", "Jack", "Queen", "King", "Joker"]
-
-print(*Cards)
 
 Ace = "Waterfall"
 Two = "You"
@@ -53,6 +51,7 @@ Joker = "Joker"
 
 def suit(suits, suit_name):                                                     # function that adds the suit name to each item of the list (and card)
     for i in range(len(cards)):
+        suits.append(cards[i])
         suits[i] = cards[i] + suit_name
 
 suit(hearts, hearts_name)                                                       # use of the suit funtion so each element has a card value followed by it's suit
