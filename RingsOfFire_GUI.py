@@ -83,8 +83,8 @@ def whiteSpace():
 
 
 def WarmUp():                                                                   # 1st screen shown to player, asks if jokers are to be included and prompts the user to start the game
-    layout = [
-                                                                                #defining different objects from PySimpleGUI to use on the first window
+    layout = [                                                                  #defining different objects from PySimpleGUI to use on the first window
+
         center([sg.Text("--- Welcome to Rings of Fire ---")]),                  # Top Text
 
         center([sg.Text("Do you wish to include Jokers?")]),                    # Under text question
@@ -385,11 +385,11 @@ while True:
             back = True
 
 
-    elif window == window2 and event == "CARD_BUTTON" and len(deck) == 0:         # if the deck is empty the button to pull a card is updated to "Click to exit"
+    elif window == window2 and event == "CARD_BUTTON" and len(deck) == 0:       # if the deck is empty the button to pull a card is updated to "Click to exit"
         window["YOUR_CARD"].update("Game Over")
 
 
-    elif window == window3 and event == sg.WINDOW_CLOSED:                         # sg.WINDOW_CLOSED is the action of clicking the top right exit button of a window
+    elif window == window3 and event == sg.WINDOW_CLOSED:                       # sg.WINDOW_CLOSED is the action of clicking the top right exit button of a window
         print("\n ********* Game Ended by user *********")
         break
 
@@ -402,8 +402,8 @@ while True:
             window1 = WarmUp()
             window4.close()
             window4 = ListRules()
-            loc1 = window1.CurrentLocation()                                        # gets the coordenates of the rule defining window and equals it to loc3 variable
-            window1X, window1Y = loc1                                               # turns the two values in the list into separate variables for x and y coordenates
+            loc1 = window1.CurrentLocation()                                    # gets the coordenates of the rule defining window and equals it to loc3 variable
+            window1X, window1Y = loc1                                           # turns the two values in the list into separate variables for x and y coordenates
             window4.Move(window1X + 270 , window1Y - 100)
 
     elif window == window3 and event == "Next":
