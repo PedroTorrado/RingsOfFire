@@ -95,9 +95,10 @@ def WarmUp():                                                                   
         "Jokers won't be included",                                             # Jokers state displayed
             text_color = "Red",
             justification = "center",
-            size=(18, 1), key = "DISPLAY")]),
+            size=(18, 1), key = "DISPLAY",
+            background_color = "Black")]),
 
-        center([sg.Button("Play ➤", key = "Start Game", size = (7,1))]),                                       # Start Button
+        center([sg.Button("Play ➤", key = "Start Game", size = (7,1))]),       # Start Button
 
         center([sg.Button("Change Rules ⛭", key = "Change Rules")])
     ]
@@ -181,7 +182,7 @@ def RuleDefining():
 
         center([sg.Button("Next", pad = (10, 20), bind_return_key = True),
         sg.Button("Rules", pad = (10, 20)),
-        sg.Button("Done", key = "Back", pad = (10, 20))])
+        sg.Button("Back", pad = (10, 20))])
     ]
     return sg.Window(
         "RuleDefining",
@@ -332,7 +333,7 @@ while True:
         window2.hide()
         window1 = WarmUp()
 
-    elif window == window2 and event == "RESTART_BUTTON":                         # if the restart button is pressed
+    elif window == window2 and event == "RESTART_BUTTON":                       # if the restart button is pressed
                                                                                 # the jokerstate is checked to see which deck was being used, a 52 card or a 54
         if jokerstate == 0: deck = blackSuits + redSuits                        # since the items of the deck list where removed this needs to be recomposed by the lists from the biggining
         if jokerstate == 1: deck = blackSuits + redSuits + Jokers               # same here but including also the jokers
@@ -397,6 +398,7 @@ while True:
         window1 = WarmUp()
 
         if window4Open == 1:
+            window1.close()
             window1 = WarmUp()
             window4.close()
             window4 = ListRules()
