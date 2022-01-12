@@ -95,7 +95,7 @@ def WarmUp():                                                                   
         "Jokers won't be included",                                             # Jokers state displayed
             text_color = "Red",
             justification = "center",
-            size=(18, 1), key = "DISPLAY",
+            size=(20, 1), key = "DISPLAY",
             background_color = "Black")]),
 
         center([sg.Button("Play ➤", key = "Start Game", size = (7,1))]),       # Start Button
