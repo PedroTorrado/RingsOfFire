@@ -105,7 +105,7 @@ def WarmUp():
         "Jokers won't be included",
             text_color = "Red",
             justification = "center",
-            size=(18, 1), key = "DISPLAY",
+            size=(20, 1), key = "DISPLAY",
             background_color = "Black")]),
 
         center([sg.Button("Play ➤", key = "Start Game", size = (7,1))]),
@@ -210,9 +210,8 @@ def ListRules():
         return [sg.Text(f"{CardFace} is for : {CardsFaceValue}", key = CardKey)]
 
     layout = [
-        center([sg.Text("This are the rules:",
-        background_color = "White",
-        text_color = "Black")]),
+        center([sg.Text("This are the rules:")]),
+        center([sg.Text("_"*100)]),
 
         printCard(Cards[0], Ace, "Ace"),
         printCard(Cards[1], Two, "Two"),
