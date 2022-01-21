@@ -95,7 +95,7 @@ def whiteSpace():
 def WarmUp():
     layout = [
 
-        center([sg.Text("--- Welcome to Rings of Fire ---")]),
+        center([sg.Text("--- Welcome to Rings of Fire ---", font = ("Any 11"))]),
 
         center([sg.Text("Do you wish to include Jokers?")]),
 
