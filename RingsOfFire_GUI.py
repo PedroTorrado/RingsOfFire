@@ -8,10 +8,10 @@ cards = numbers_str + figures
 window4Open = 0
 
 #defining the name of each suit so they can be added to the items of each list
-hearts_name = " of Hearts"
-diamonds_name = " of Diamonds"
-spades_name = " of Spades"
-clubs_name = " of Clubs"
+hearts_name = " ♥"
+diamonds_name = " ♦"
+spades_name = " ♠"
+clubs_name = " ♣"
 
 #defining the necessary list for each suit
 hearts = []
