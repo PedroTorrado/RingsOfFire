@@ -283,16 +283,16 @@ def rules():
         updateFace("10")
     elif "Jack" in card:
         rule = Jack
-        updateFace("JACK")
+        updateFace("Jack")
     elif "Queen" in card:
         rule = Queen
-        updateFace("QUEEN")
+        updateFace("Queen")
     elif "King" in card:
         rule = King
-        updateFace("KING")
+        updateFace("King")
     elif "Joker" in card:
         rule = Joker
-        updateFace("JOKER")
+        updateFace("Joker")
     else:
         rule = card
 
