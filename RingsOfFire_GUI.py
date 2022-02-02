@@ -99,14 +99,11 @@ def WarmUp():
 
         center([sg.Text("Do you wish to include Jokers?")]),
 
-        center([sg.Button("Jokers")]),
-
-        center([sg.Text(
-        "Jokers won't be included",
-            text_color = "Red",
-            justification = "center",
-            size=(20, 1), key = "DISPLAY",
-            background_color = "Black")]),
+        center([sg.Button("Jokers",
+            button_color = "red",
+            key = "DISPLAY",
+            size = (7, 1),
+            pad = (10,5))]),
 
         center([sg.Button("Play ➤", key = "Start Game", size = (7,1))]),
 
@@ -116,7 +113,7 @@ def WarmUp():
         "WarmUp",
         layout = layout,
         size = (250, 200),
-        icon=icon,
+        icon = icon,
         finalize = True)
 
 # UI Screen for the Game itself
@@ -241,7 +238,7 @@ window1, window2, window3, window4 = WarmUp(), None, None, None
 
 # Define jokers as not included in default
 jokerstate = 0
-print("Jokers won't be included")
+print("⨯")
 
 def rules():
 
@@ -309,22 +306,20 @@ while True:
         print("\n ********* Game Ended by user *********")
         break
 
-    elif window1 == window1 and event == "Jokers":
+    elif window1 == window1 and event == "DISPLAY":
 
         # if jokers are included
         if jokerstate == 0:
             print("Jokers will be included")
             window["DISPLAY"].update(
-                text_color = "Green",
-                value = "Jokers will be included")
+                button_color = "Green")
             jokerstate = 1
 
         # if jokers are not to be included
         elif jokerstate == 1:
             print("Jokers won't be included")
             window["DISPLAY"].update(
-                text_color = "Red",
-                value = "Jokers won't be included")
+                button_color = "Red")
             jokerstate = 0
 
     # The Game window is opened by the user
