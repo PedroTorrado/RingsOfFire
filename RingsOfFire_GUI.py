@@ -64,7 +64,7 @@ suit(clubs, clubs_name)
 
 # defining the list joker as two items so they can be added case the user wants so
 Jokers = ["Joker", "Joker"]
-
+buttonColor = "#701414"
 # turning it's suit to a black or red list for visual effects
 blackSuits = clubs + spades
 redSuits = diamonds + hearts
@@ -100,7 +100,7 @@ def WarmUp():
         center([sg.Text("Do you wish to include Jokers?")]),
 
         center([sg.Button("Jokers",
-            button_color = "red",
+            button_color = buttonColor,
             key = "DISPLAY",
             size = (7, 1),
             pad = (10,5))]),
@@ -312,14 +312,16 @@ while True:
         if jokerstate == 0:
             print("Jokers will be included")
             window["DISPLAY"].update(
-                button_color = "Green")
+                button_color = "#09630f") # Green
+            buttonColor = "#09630f"
             jokerstate = 1
 
         # if jokers are not to be included
         elif jokerstate == 1:
             print("Jokers won't be included")
             window["DISPLAY"].update(
-                button_color = "Red")
+                button_color = "#701414") # Red
+            buttonColor = "#701414"
             jokerstate = 0
 
     # The Game window is opened by the user
