@@ -1,3 +1,4 @@
+import tkinter
 import random
 import PySimpleGUI as sg
 
@@ -21,7 +22,6 @@ clubs = []
 
 # check what OS is being used so the correct image can be used for it's icon
 import os
-print(os.name)
 if 'nt' in os.name:
     #windows
     icon = "Images/Icon/icon.ico"
@@ -238,7 +238,6 @@ window1, window2, window3, window4 = WarmUp(), None, None, None
 
 # Define jokers as not included in default
 jokerstate = 0
-print("⨯")
 
 def rules():
 
@@ -332,7 +331,6 @@ while True:
         # jokers are not included
         if jokerstate == 0:
              deck = deck
-
              print("Cards on a deck:", len(deck))
 
         # jokers are included
