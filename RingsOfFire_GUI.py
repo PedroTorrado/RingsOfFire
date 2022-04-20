@@ -112,7 +112,6 @@ def WarmUp():
     return sg.Window(
         "WarmUp",
         layout = layout,
-        size = (250, 200),
         icon = icon,
         finalize = True)
 
@@ -168,12 +167,11 @@ def Game():
         pad = (10, 5),
         key = "CARD_BUTTON")]),
 
-        center([sg.Button("Back", key = "RESTART_BUTTON")])
+        center([sg.Button("Back", pad = (10, 5),key = "RESTART_BUTTON")])
     ]
     return sg.Window(
         "Rings of Fire",
         layout = layout,
-        size = (290, 350),
         icon=icon,
         finalize = True)
 
@@ -196,7 +194,6 @@ def RuleDefining():
     return sg.Window(
         "RuleDefining",
         layout = layout,
-        size = (300, 190),
         icon=icon,
         finalize = True
     )
@@ -208,7 +205,7 @@ def ListRules():
 
     layout = [
         center([sg.Text("This are the rules:")]),
-        center([sg.Text("_"*100)]),
+        center([sg.Text("_"*10)]),
 
         printCard(Cards[0], Ace, "Ace"),
         printCard(Cards[1], Two, "Two"),
@@ -228,7 +225,6 @@ def ListRules():
     return sg.Window(
         "ListRules",
         layout = layout,
-        size = (250, 400),
         icon=icon,
         finalize = True
     )
