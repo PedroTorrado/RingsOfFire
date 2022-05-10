@@ -370,6 +370,10 @@ while True:
         window["YOUR_CARD"].update(
             value = "Card",
             text_color = "Black")
+
+        window["YOUR_CARD_FACE_TOP"].update(" ")
+        window["YOUR_CARD_FACE_BOTTOM"].update(" ")
+        
         # Since the decks are full the restart button turns to a Back button
         window["RESTART_BUTTON"].update("Back")
         window["RULE_DISPLAY"].update(value = "Rule")
@@ -418,6 +422,10 @@ while True:
     # No more Cards in deck, update Card Display to Game Over
     elif window == window2 and event == "CARD_BUTTON" and len(deck) == 0:
         window["YOUR_CARD"].update("Game Over")
+        window["YOUR_CARD_FACE_TOP"].update(" ")
+        window["YOUR_CARD_FACE_BOTTOM"].update(" ")
+        window["RULE_DISPLAY"].update("Press Restart to play again")
+
 
 
     elif window == window3 and event == sg.WINDOW_CLOSED:
