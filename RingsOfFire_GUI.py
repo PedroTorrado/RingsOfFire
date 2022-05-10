@@ -187,11 +187,13 @@ def RuleDefining():
     layout = [
         center([sg.Text("Defining the Rules")]),
         [sg.Combo(Cards, default_value = "Choose your card",
+        background_color = "white",
         key = "combo",
         size = (20,1),
         pad = (10, 20))],
 
         center([sg.Input("Write your Rule here",
+        background_color = "white",
         key = "New_Rule")]),
 
         center([sg.Button("Next", pad = (10, 20), bind_return_key = True),
