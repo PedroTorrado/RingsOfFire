@@ -22,7 +22,7 @@ clubs = []
 
 sz=(10,20)
 
-sg.theme_previewer()
+# sg.theme_previewer()
 
 # check what OS is being used so the correct image can be used for it's icon
 import os
@@ -527,7 +527,7 @@ while True:
             window4Open = 1
             loc3 = window3.CurrentLocation()
             window3X, window3Y = loc3
-            window4.Move(window3X + 310 , window3Y - 100)
+            window4.Move(window3X + 370 , window3Y - 100)
 
     elif window == window4 and event == sg.WINDOW_CLOSED:
         window.close()
