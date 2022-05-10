@@ -22,6 +22,8 @@ clubs = []
 
 sz=(10,20)
 
+sg.theme_previewer()
+
 # check what OS is being used so the correct image can be used for it's icon
 import os
 if 'nt' in os.name:
@@ -78,7 +80,7 @@ deck = blackSuits + redSuits
 back = True
 
 # UI theme
-sg.theme("Topanga")
+sg.theme("Dark Grey 5")
 
 ######################## GUI DEFINING ##########################################
 
@@ -373,7 +375,7 @@ while True:
 
         window["YOUR_CARD_FACE_TOP"].update(" ")
         window["YOUR_CARD_FACE_BOTTOM"].update(" ")
-        
+
         # Since the decks are full the restart button turns to a Back button
         window["RESTART_BUTTON"].update("Back")
         window["RULE_DISPLAY"].update(value = "Rule")
