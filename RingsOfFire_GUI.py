@@ -20,6 +20,8 @@ diamonds = []
 spades = []
 clubs = []
 
+sz=(10,20)
+
 # check what OS is being used so the correct image can be used for it's icon
 import os
 if 'nt' in os.name:
@@ -116,7 +118,9 @@ def WarmUp():
         finalize = True)
 
 # UI Screen for the Game itself
+
 def Game():
+
     layout = [
         center([sg.Text("The number of cards will be displayed here",
         justification = "center",
@@ -172,6 +176,7 @@ def Game():
     return sg.Window(
         "Rings of Fire",
         layout = layout,
+        size = (290, 350),
         icon=icon,
         finalize = True)
 
