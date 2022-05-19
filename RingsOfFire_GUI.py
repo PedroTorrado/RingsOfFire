@@ -97,22 +97,27 @@ def whiteSpace():
 
 # First UI screen
 def WarmUp():
-    layout = [
 
-        center([sg.Text("--- Welcome to Rings of Fire ---", font = ("Any 11"))]),
+    layout = [[
+        sg.Column([
 
-        center([sg.Text("Do you wish to include Jokers?")]),
+              [sg.Text("--- Welcome to Rings of Fire ---", font = ("Any 11"))],
 
-        center([sg.Button("Jokers",
-            button_color = buttonColor,
-            key = "DISPLAY",
-            size = (7, 1),
-            pad = (10,5))]),
+              [sg.Text("Do you wish to include Jokers?")],
 
-        center([sg.Button("Play ➤", key = "Start Game", size = (7,1))]),
+              [sg.Button("Jokers",
+                  button_color = buttonColor,
+                  key = "DISPLAY",
+                  size = (7, 1),
+                  pad = (10,5))],
 
-        center([sg.Button("Change Rules ⛭", key = "Change Rules")])
-    ]
+              [sg.Button("Play ➤", key = "Start Game", size = (7,1))],
+
+              [sg.Button("Change Rules ⛭", key = "Change Rules")]
+
+        ], element_justification = "c", pad = (10,10) )
+    ]]
+
     return sg.Window(
         "WarmUp",
         layout = layout,
@@ -123,83 +128,92 @@ def WarmUp():
 
 def Game():
 
-    layout = [
-        center([sg.Text("The number of cards will be displayed here",
-        justification = "center",
-        key = "NUMBER_DISPLAY")]),
 
-        center([sg.Text("-----Card Taken-----", pad = (10,10))]),
+    layout = [[
+        sg.Column([
 
-        center([sg.Text("Card",
-        text_color = "Black",
-        size = (20,1),
-        background_color = "white",
-        pad = (10, 0),
-        key = "YOUR_CARD_FACE_TOP")]),
+              [sg.Text("Numer of Cards on the Deck: ",
+              justification = "center",
+              key = "NUMBER_DISPLAY")],
 
-        whiteSpace(),
-        whiteSpace(),
-        whiteSpace(),
+              [sg.Text("----- Card Taken -----", pad = (10,10))],
 
-        center([sg.Text("Card",
-        text_color = "Black",
-        size = (20,1),
-        justification = "center",
-        background_color = "white",
-        pad = (10, 0),
-        key = "YOUR_CARD")]),
+              [sg.Text("Card",
+              text_color = "Black",
+              size = (20,1),
+              background_color = "white",
+              pad = (10, 0),
+              key = "YOUR_CARD_FACE_TOP")],
 
-        center([sg.Text("Rule",
-        text_color = "Black",
-        size = (20, 1),
-        justification = "center",
-        background_color = "white",
-        pad = (10, 0),
-        key = "RULE_DISPLAY")]),
+              whiteSpace(),
+              whiteSpace(),
+              whiteSpace(),
 
-        whiteSpace(),
-        whiteSpace(),
-        whiteSpace(),
+              [sg.Text("Card",
+              text_color = "Black",
+              size = (20,1),
+              justification = "center",
+              background_color = "white",
+              pad = (10, 0),
+              key = "YOUR_CARD")],
 
-        center([sg.Text("Card",
-        text_color = "Black",
-        size = (20,1),
-        justification = "right",
-        background_color = "white",
-        pad = (10, 0),
-        key = "YOUR_CARD_FACE_BOTTOM")]),
+              [sg.Text("Rule",
+              text_color = "Black",
+              size = (20, 1),
+              justification = "center",
+              background_color = "white",
+              pad = (10, 0),
+              key = "RULE_DISPLAY")],
 
-        center([sg.Button("Pull a card",
-        pad = (10, 5),
-        key = "CARD_BUTTON")]),
+              whiteSpace(),
+              whiteSpace(),
+              whiteSpace(),
 
-        center([sg.Button("Back", pad = (10, 5),key = "RESTART_BUTTON")])
-    ]
+              [sg.Text("Card",
+              text_color = "Black",
+              size = (20,1),
+              justification = "right",
+              background_color = "white",
+              pad = (10, 0),
+              key = "YOUR_CARD_FACE_BOTTOM")],
+
+              [sg.Button("Pull a card",
+              pad = (10, 5),
+              key = "CARD_BUTTON")],
+
+              [sg.Button("Back", pad = (10, 5),key = "RESTART_BUTTON")]
+
+        ], element_justification = "c", pad = (10,10))
+    ]]
+
     return sg.Window(
         "Rings of Fire",
         layout = layout,
-        size = (290, 350),
         icon=icon,
         finalize = True)
 
 # UI screen for changing the rules
 def RuleDefining():
-    layout = [
-        center([sg.Text("Defining the Rules")]),
-        [sg.Combo(Cards, default_value = "Choose your card",
-        background_color = "white",
-        key = "combo",
-        size = (20,1),
-        pad = (10, 20))],
+    layout = [[
+        sg.Column([
+            [sg.Text("Defining the Rules")],
 
-        center([sg.Input("Write your Rule here",
-        background_color = "white",
-        key = "New_Rule")]),
+            [sg.Combo(Cards, default_value = "Choose your card",
+            background_color = "white",
+            key = "combo",
+            size = (20,1),
+            pad = (10, 20))],
 
-        center([sg.Button("Next", pad = (10, 20), bind_return_key = True),
-        sg.Button("Rules", pad = (10, 20)),
-        sg.Button("Back", pad = (10, 20))])
-    ]
+            [sg.Input("Write your Rule here",
+            background_color = "white",
+            key = "New_Rule", pad = (10, 0))],
+
+            [sg.Button("Next", pad = (10, 20), bind_return_key = True),
+            sg.Button("Rules", pad = (10, 20)),
+            sg.Button("Back", pad = (10, 20))]
+
+        ], justification = "c")
+    ]]
     return sg.Window(
         "RuleDefining",
         layout = layout,
@@ -212,7 +226,7 @@ def ListRules():
     def printCard(CardFace, CardsFaceValue, CardKey):
         return [sg.Text(f"{CardFace} is for : {CardsFaceValue}", key = CardKey)]
 
-    layout = [
+    layout = [[sg.Column([
         center([sg.Text("This are the rules:")]),
         center([sg.Text("_"*10)]),
 
@@ -230,7 +244,9 @@ def ListRules():
         printCard(Cards[11], Queen, "Queen"),
         printCard(Cards[12], King, "King"),
         printCard(Cards[13], Joker, "Joker")
-    ]
+
+    ], justification = "c")]]
+
     return sg.Window(
         "ListRules",
         layout = layout,
